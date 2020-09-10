@@ -108,7 +108,7 @@ class FuneralService
             $attachment = [];
             $attachment['uri'] = $orderTemplate['@id'];
             $attachment['mime'] = 'application/pdf';
-            $attachment['name'] = "{$order['reference']}.pdf";
+            $attachment['name'] = "{$order['reference']}-Orderbevestiging.pdf";
             $attachment['resources'] = ['resource'=>$order['@id']];
             $attachments[] = $attachment;
             if(key_exists('invoice', $order) && $order['invoice'] != null){
@@ -117,13 +117,23 @@ class FuneralService
                 $attachment = [];
                 $attachment['uri'] = $invoiceTemplate['@id'];
                 $attachment['mime'] = 'application/pdf';
-                $attachment['name'] = "{$invoice['name']}.pdf";
+                $attachment['name'] = "{$invoice['name']}-Factuur.pdf";
                 $attachment['resources'] = ['resource'=>$invoice['@id']];
                 $attachments[] = $attachment;
             }
         }
-        var_dump(count($attachments));
+
         $content = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}/e-mail-bevestiging"])['@id'];
+        if(key_exists('contactpersoon', $request['properties'])) {
+            $receiver = $request['properties']['contactpersoon'];
+        } elseif(key_exists('factuur_persoon', $request['properties'])) {
+            $receiver = $request['properties']['factuur_persoon'];
+        } elseif(key_exists('aanvrager/rechthebbende',$request['properties']) && key_exists('contact', $assent = $this->commonGroundService->getResource($request['properties']['aanvrager/rechthebbende']))) {
+            $receiver = $assent['contact'];
+        } else {
+            return 'Geen ontvanger gevonden';
+        }
+        $message = $this->createMessage($request, $content, $receiver, $attachments);
 
         $application = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}"]);
         if(key_exists('@id', $application['organization'])){
@@ -132,27 +142,7 @@ class FuneralService
             $serviceOrganization = $request['organization'];
         }
 
-        $message = [];
-        $message['service'] = $this->commonGroundService->getResourceList(['component'=>'bs', 'type'=>'services'], "?type=mailer&organization=$serviceOrganization")['hydra:member'][0]['@id'];
-        $message['status'] = 'queued';
-        $organization = $this->commonGroundService->getResource($request['organization']);
-
-//        if ($organization['contact']) {
-//            $message['sender'] = $organization['contact'];
-//        }
-        if(key_exists('contactpersoon', $request['properties'])){
-            $message['reciever'] = $request['properties']['contactpersoon'];
-            if (!key_exists('sender', $message)) {
-                $message['sender'] = $message['reciever'];
-            }
-        }
-        $message['data'] = ['resource'=>$request, 'sender'=>$organization, 'receiver'=>$this->commonGroundService->getResource($message['reciever'])];
-        $message['content'] = $content;
-        $message['attachments'] = $attachments;
-
-        $result = $this->commonGroundService->createResource($message, ['component'=>'bs', 'type'=>'messages'])['@id'];
-
-        return $result;
+        return $this->commonGroundService->createResource($message, ['component'=>'bs', 'type'=>'messages'])['@id'];
     }
 
 }
