@@ -9,7 +9,7 @@ info:
     - Enviroment: dev
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/proto-component) / [zip](https://github.com/ConductionNL/proto-component/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/bgs-php) 
     - Datamodel: [postman](/schema/bgs.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [modelio (zip)](/schema/Datamodel_Modelio.zip) 
     
     "Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar."         

@@ -4,20 +4,20 @@
 
 settings:
   registryBase: docker.io/conduction
-  projectName: pc
+  projectName: bgs
   name: bgs
-  title: &quot;Begrafenisservice&quot;
+  title: Begrafenisservice
   version: V1.0
   majorVersion: v1
   id: 3f44c00e-d919-4f89-bd4c-b730c9b2620a
   description: '&quot;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&quot;'
   type: component
   repro: https://github.com/ConductionNL/proto-component
-  demo: pc.zaakonline.nl
-  container: https://hub.docker.com/repository/docker/conduction/pc-php
+  demo: bgs.zaakonline.nl
+  container: https://hub.docker.com/repository/docker/conduction/bgs-php
   domain: westfriesland.commonground.nu
-  subdomain: pc
-  subpath: pc
+  subdomain: bgs
+  subpath: bgs
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
