@@ -9,7 +9,7 @@ info:
     - Enviroment: dev
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/proto-component) / [zip](https://github.com/ConductionNL/proto-component/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/bgs-php) 
     - Datamodel: [postman](/schema/bgs.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [modelio (zip)](/schema/Datamodel_Modelio.zip) 
     
     "Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar."         
@@ -1942,21 +1942,21 @@ paths:
             schema:
               $ref: '#/components/schemas/ChangeLog-write'
         description: 'The updated ChangeLog resource'
-  /webhooks:
+  /web_hooks:
     get:
       tags:
-        - Webhook
-      operationId: getWebhookCollection
-      summary: 'Retrieves the collection of Webhook resources.'
+        - WebHook
+      operationId: getWebHookCollection
+      summary: 'Retrieves the collection of WebHook resources.'
       responses:
         200:
-          description: 'Webhook collection response'
+          description: 'WebHook collection response'
           content:
             application/ld+json:
               schema:
                 type: object
                 properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Webhook:jsonld-read' } }
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/WebHook:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -1966,7 +1966,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Webhook:jsonld-read' } }
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/WebHook:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -1976,57 +1976,57 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             application/json+hal:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             application/vnd.api+json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             application/json+vnd.api:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             application/health+json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             application/json+health:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             application/x-yaml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             text/csv:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
             text/html:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Webhook-read'
+                  $ref: '#/components/schemas/WebHook-read'
       parameters:
         -
           name: 'order[id]'
@@ -2126,7 +2126,7 @@ paths:
             type: array
             items:
               type: string
-          style: form
+          style: deepObject
           explode: true
         -
           name: page
@@ -2220,58 +2220,58 @@ paths:
         - application/health+json
     post:
       tags:
-        - Webhook
-      operationId: postWebhookCollection
-      summary: 'Creates a Webhook resource.'
+        - WebHook
+      operationId: postWebHookCollection
+      summary: 'Creates a WebHook resource.'
       responses:
         201:
-          description: 'Webhook resource created'
+          description: 'WebHook resource created'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
           links:
-            GetWebhookItem:
+            GetWebHookItem:
               parameters:
                 id: '$response.body#/id'
-              operationId: getWebhookItem
-              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /webhooks/{id}`.'
+              operationId: getWebHookItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /web_hooks/{id}`.'
         400:
           description: 'Invalid input'
         404:
@@ -2280,44 +2280,44 @@ paths:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/Webhook:jsonld-write'
+              $ref: '#/components/schemas/WebHook:jsonld-write'
           application/json+ld:
             schema:
-              $ref: '#/components/schemas/Webhook:jsonld-write'
+              $ref: '#/components/schemas/WebHook:jsonld-write'
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/json+hal:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/json+vnd.api:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/health+json:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/json+health:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
-        description: 'The new Webhook resource'
+              $ref: '#/components/schemas/WebHook-write'
+        description: 'The new WebHook resource'
       parameters:
         -
           name: Authorization
@@ -2348,12 +2348,12 @@ paths:
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
-  '/webhooks/{id}':
+  '/web_hooks/{id}':
     get:
       tags:
-        - Webhook
-      operationId: getWebhookItem
-      summary: 'Retrieves a Webhook resource.'
+        - WebHook
+      operationId: getWebHookItem
+      summary: 'Retrieves a WebHook resource.'
       parameters:
         -
           name: id
@@ -2434,56 +2434,56 @@ paths:
           in: query
       responses:
         200:
-          description: 'Webhook resource response'
+          description: 'WebHook resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
         404:
           description: 'Resource not found'
       produces:
         - application/health+json
     put:
       tags:
-        - Webhook
-      operationId: putWebhookItem
-      summary: 'Replaces the Webhook resource.'
+        - WebHook
+      operationId: putWebHookItem
+      summary: 'Replaces the WebHook resource.'
       parameters:
         -
           name: id
@@ -2522,47 +2522,47 @@ paths:
           in: header
       responses:
         200:
-          description: 'Webhook resource updated'
+          description: 'WebHook resource updated'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
         400:
           description: 'Invalid input'
         404:
@@ -2571,52 +2571,52 @@ paths:
         content:
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/Webhook:jsonld-write'
+              $ref: '#/components/schemas/WebHook:jsonld-write'
           application/json+ld:
             schema:
-              $ref: '#/components/schemas/Webhook:jsonld-write'
+              $ref: '#/components/schemas/WebHook:jsonld-write'
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/json+hal:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/json+vnd.api:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/health+json:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/json+health:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
+              $ref: '#/components/schemas/WebHook-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Webhook-write'
-        description: 'The updated Webhook resource'
+              $ref: '#/components/schemas/WebHook-write'
+        description: 'The updated WebHook resource'
     delete:
       tags:
-        - Webhook
-      operationId: deleteWebhookItem
-      summary: 'Removes the Webhook resource.'
+        - WebHook
+      operationId: deleteWebHookItem
+      summary: 'Removes the WebHook resource.'
       responses:
         204:
-          description: 'Webhook resource deleted'
+          description: 'WebHook resource deleted'
         404:
           description: 'Resource not found'
       parameters:
@@ -2658,9 +2658,9 @@ paths:
   '/webhooks/{id}/audit_trail':
     get:
       tags:
-        - Webhook
-      operationId: get_audit_trailWebhookItem
-      summary: 'Retrieves a Webhook resource.'
+        - WebHook
+      operationId: get_audit_trailWebHookItem
+      summary: 'Retrieves a WebHook resource.'
       parameters:
         -
           name: id
@@ -2741,47 +2741,47 @@ paths:
           in: query
       responses:
         200:
-          description: 'Webhook resource response'
+          description: 'WebHook resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
         404:
           description: 'Resource not found'
       produces:
@@ -2789,9 +2789,9 @@ paths:
   '/webhooks/{id}/change_log':
     get:
       tags:
-        - Webhook
-      operationId: get_change_logsWebhookItem
-      summary: 'Retrieves a Webhook resource.'
+        - WebHook
+      operationId: get_change_logsWebHookItem
+      summary: 'Retrieves a WebHook resource.'
       parameters:
         -
           name: id
@@ -2872,47 +2872,47 @@ paths:
           in: query
       responses:
         200:
-          description: 'Webhook resource response'
+          description: 'WebHook resource response'
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/json+ld:
               schema:
-                $ref: '#/components/schemas/Webhook:jsonld-read'
+                $ref: '#/components/schemas/WebHook:jsonld-read'
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+hal:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+vnd.api:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/health+json:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/Webhook-read'
+                $ref: '#/components/schemas/WebHook-read'
         404:
           description: 'Resource not found'
       produces:
@@ -3297,7 +3297,7 @@ components:
         '@type':
           readOnly: true
           type: string
-    Webhook-read:
+    WebHook-read:
       type: object
       description: ''
       properties:
@@ -3323,9 +3323,11 @@ components:
           nullable: true
         result:
           description: 'The url of the message that is stored to the TRC'
-          type: string
+          type: array
+          items:
+            type: string
           nullable: true
-    Webhook-write:
+    WebHook-write:
       type: object
       description: ''
       properties:
@@ -3334,7 +3336,7 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
-    'Webhook:jsonld-read':
+    'WebHook:jsonld-read':
       type: object
       description: ''
       properties:
@@ -3369,9 +3371,11 @@ components:
           nullable: true
         result:
           description: 'The url of the message that is stored to the TRC'
-          type: string
+          type: array
+          items:
+            type: string
           nullable: true
-    'Webhook:jsonld-write':
+    'WebHook:jsonld-write':
       type: object
       description: ''
       properties:
@@ -3390,7 +3394,7 @@ components:
             url: 'http://schema.org/url'
           type: string
 definitions:
-  Webhook-read:
+  WebHook-read:
     properties:
       id:
         description: 'The UUID identifier of this resource'
@@ -3405,7 +3409,7 @@ definitions:
         type: string
       result:
         description: 'The url of the message that is stored to the TRC'
-        type: string
+        type: array
     required: []
   ChangeLog-read:
     properties:
@@ -3445,12 +3449,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-09-10 07:42:36'
+        example: '2020-09-10 11:48:44'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-09-10 07:42:36'
+        example: '2020-09-10 11:48:44'
     required: []
   ChangeLog-write:
     properties:
@@ -3564,12 +3568,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-09-10 07:42:36'
+        example: '2020-09-10 11:48:44'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-09-10 07:42:36'
+        example: '2020-09-10 11:48:44'
     required: []
   AuditTrail-write:
     properties:
@@ -3581,7 +3585,7 @@ definitions:
     required: []
 tags:
   -
-    name: Webhook
+    name: WebHook
     description: |
       
       

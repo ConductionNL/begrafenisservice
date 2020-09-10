@@ -3,5 +3,5 @@ appVersion: V1.0
 description: '&quot;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&quot;'
 name: bgs
 version: 0.1.0
-home: pc.zaakonline.nl
-icon: pc.zaakonline.nl
+home: bgs.zaakonline.nl
+icon: bgs.zaakonline.nl
