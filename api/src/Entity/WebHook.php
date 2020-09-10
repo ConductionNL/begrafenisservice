@@ -51,7 +51,7 @@ use Conduction\CommonGroundBundle\Entity\ChangeLog;
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
  * @ApiFilter(SearchFilter::class)
  */
-class Webhook
+class WebHook
 {
     /**
      * @var UuidInterface The UUID identifier of this resource
@@ -96,11 +96,11 @@ class Webhook
     private $status;
 
     /**
-     * @var string The url of the message that is stored to the TRC
+     * @var array The url of the message that is stored to the TRC
      * @Groups({"read"})
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="array", nullable=true)
      */
-    private $result;
+    private $result= [];
 
     public function getId(): ?UuidInterface
     {
@@ -143,12 +143,12 @@ class Webhook
         return $this;
     }
 
-    public function getResult(): ?string
+    public function getResult(): ?array
     {
         return $this->result;
     }
 
-    public function setResult(?string $result): self
+    public function setResult(?array $result): self
     {
         $this->result = $result;
 
