@@ -6,7 +6,7 @@ settings:
   registryBase: docker.io/conduction
   projectName: bgs
   name: bgs
-  title: Begrafenisservice
+  title: &quot;Begrafenisservice&quot;
   version: V1.0
   majorVersion: v1
   id: 3f44c00e-d919-4f89-bd4c-b730c9b2620a
