@@ -3,14 +3,14 @@ entries:
   bgs:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2020-09-10T11:53:45.4517348Z"
+    created: "2020-09-10T14:07:13.2966731Z"
     description: '&quot;Naast deze JSON rest API is er ook een [graphql](/graphql)
       interface beschikbaar.&quot;'
-    digest: 25542e32751476689b041b392859861bbb4cfe943ca0231954260084c4eb4402
+    digest: 9f29563c5205a8d7381d2b8a3211d81c9bce7918a9035abd2199af8004d98bcd
     home: bgs.zaakonline.nl
     icon: bgs.zaakonline.nl
     name: bgs
     urls:
     - bgs-0.1.0.tgz
     version: 0.1.0
-generated: "2020-09-10T11:53:45.4458322Z"
+generated: "2020-09-10T14:07:13.2897733Z"
