@@ -24,6 +24,5 @@ class AppFixtures extends Fixture
         if (strpos($this->params->get('app_domain'), 'localhost') == false) {
             return false;
         }
-
     }
 }

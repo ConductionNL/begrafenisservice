@@ -10,12 +10,10 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\WebhookRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Conduction\CommonGroundBundle\Entity\ChangeLog;
 
 /**
  * @ApiResource(
@@ -100,7 +98,7 @@ class WebHook
      * @Groups({"read"})
      * @ORM\Column(type="array", nullable=true)
      */
-    private $result= [];
+    private $result = [];
 
     public function getId(): ?UuidInterface
     {
