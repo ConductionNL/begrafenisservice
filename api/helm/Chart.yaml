@@ -1,12 +1,31 @@
-apiVersion: v1
+annotations:
+    artifacthub.io/containsSecurityUpdates: "true"
+apiVersion: v2
 appVersion: V1.0
-description: '&quot;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&quot;'
+description: '&amp;quot;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&amp;quot;'
 name: bgs
-version: 0.1.0
-home: bgs.zaakonline.nl
-icon: bgs.zaakonline.nl
+version: 1.0.0
+home: https://www.conduction.nl
+icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
+sources:
+    - https://commonground.conduction.nl/
+    - https://www.commonground.nl/
+keywords:
+    - commonground
+    - haven
+    - nlx
+    - component
+maintainers:
+    - email: ruben@conduction.nl
+      name: Ruben van der Linde
+    - email: info@conduction.nl
+      name: Conduction
 dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: 10.1.1
       condition: postgresql.enabled
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.7.7
+      condition: redis.enabled
