@@ -1,19 +1,18 @@
 openapi: 3.0.2
 info:
-  title: '"Begrafenisservice"'
+  title: ''
   version: V1.0
   description: |
     API Details
-    - Component: "Begrafenisservice"
-    - Reference: bgs
+    - Component: 
+    - Reference: begrafenisservice
     - Enviroment: dev
     - Version: V1.0
-    - Repository: [online](https://github.com/ConductionNL/proto-component) / [zip](https://github.com/ConductionNL/proto-component/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/bgs-php) 
-    - Datamodel: [postman](schema/bgs.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
-    
-    "Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar."         
-    
+    - Repository: [online](https://github.com/ConductionNL/begrafenisservice) / [zip](https://github.com/ConductionNL/begrafenisservice/archive/master.zip)
+    - Docker Image: [online]() 
+    - Datamodel: [postman](schema/begrafenisservice.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
+
+    &quot;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&quot;         
 paths:
   /audit_trails:
     get:
@@ -3527,12 +3526,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-01-14 11:00:05'
+        example: '2021-07-01 12:10:21'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-01-14 11:00:05'
+        example: '2021-07-01 12:10:21'
     required: []
   AuditTrail-write:
     properties:
@@ -3580,12 +3579,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-01-14 11:00:05'
+        example: '2021-07-01 12:10:21'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-01-14 11:00:05'
+        example: '2021-07-01 12:10:21'
     required: []
   ChangeLog-write:
     properties:
@@ -3598,21 +3597,20 @@ definitions:
 tags:
   -
     name: WebHook
-    description: |
-      
-      
-      
+    description: |+
+
+
   -
     name: AuditTrail
-    description: |
+    description: |-
       An resource representing a log line.
-      
+
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
     name: ChangeLog
-    description: |
+    description: |-
       An resource representing a log line.
-      
+
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
 securityDefinitions:
   JWT-Oauth:
@@ -3633,7 +3631,7 @@ host: irc.zaakonline.nl
 servers:
   -
     name: westfriesland.commonground.nu
-    url: bgs.dev.westfriesland.commonground.nu
+    url: begrafenisservice.dev.westfriesland.commonground.nu
 externalDocs:
   -
     description: 'OAS Documentatie'
