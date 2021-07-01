@@ -17,7 +17,7 @@ security:
 
 php:
   repository: docker.io/conduction/protocomponent-php
-  image: ghcr.io/conductionnl/bgs-php
+  image: ghcr.io/conductionnl/begrafenisservice-php
   tag: latest
   env: prod
   replicaCount: 2
@@ -39,7 +39,7 @@ redis:
 
 nginx:
   repository: docker.io/conduction/protocomponent-nginx
-  image: ghcr.io/conductionnl/bgs-nginx
+  image: ghcr.io/conductionnl/begrafenisservice-nginx
   tag: latest
   pullPolicy: Always
   replicaCount: 2
@@ -60,7 +60,7 @@ postgresql:
 
 ingress:
   enabled: false
-  hostname: proto-component.local
+  hostname: begrafenisservice.local
   path: /
   annotations:
     # kubernetes.io/ingress.global-static-ip-name: chart-ip

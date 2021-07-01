@@ -3,7 +3,7 @@ annotations:
 apiVersion: v2
 appVersion: V1.0
 description: '&amp;quot;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&amp;quot;'
-name: bgs
+name: begrafenisservice
 version: 1.0.0
 home: https://www.conduction.nl
 icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
